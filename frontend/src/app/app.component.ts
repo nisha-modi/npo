@@ -9,6 +9,8 @@ import { environment as env } from 'src/environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title = 'Node Package Optimizer';
+
   funcResponse$ = this.http.get(`${env.api}/Ping?name=world`, { responseType: 'text' });
 
   constructor(private http: HttpClient) {}
