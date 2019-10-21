@@ -1,5 +1,4 @@
-NPO
----
+## NPO
 
 In one terminal:
 
@@ -12,6 +11,7 @@ npm start
 In another terminal:
 
 ```bash
+npm install -g azure-functions-core-tools
 cd server
 npm install
 npm start
