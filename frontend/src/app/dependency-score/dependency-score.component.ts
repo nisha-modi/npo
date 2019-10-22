@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { DependencyAndAlternativesComponent } from "../dependency-and-alternatives/dependency-and-alternatives.component";
+import { Dependency } from "../dependency-and-alternatives/dependency-and-alternatives.component";
 
 @Component({
   selector: "app-dependency-score",
@@ -11,8 +11,8 @@ export class DependencyScoreComponent implements OnInit {
 
   constructor() {}
 
-  name = Dependency.name();
-  treeScore = Dependency.treeScore();
+  name = this.dependency.name;
+  treeScore = this.dependency.treeScore;
 
   ngOnInit() {}
 }

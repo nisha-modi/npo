@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 
-class Dependency {
+export class Dependency {
   name: string;
   treeScore: number;
 }
