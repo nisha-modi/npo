@@ -6,15 +6,22 @@ import { AppComponent } from './app.component';
 import { DependencyScoreComponent } from './dependency-score/dependency-score.component';
 import { DependencyAndAlternativesComponent } from './dependency-and-alternatives/dependency-and-alternatives.component';
 import { DepTreeTempComponent } from './dep-tree-temp/dep-tree-temp.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { EmptyStateComponent } from './empty-state/empty-state.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DependencyScoreComponent,
     DependencyAndAlternativesComponent,
-    DepTreeTempComponent
+    DepTreeTempComponent,
+    FileUploadComponent,
+    EmptyStateComponent
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
