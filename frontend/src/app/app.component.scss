@@ -9,10 +9,7 @@ h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
-body {
-  margin: 2em;
-}
-body,
+
 input[type="text"],
 button {
   color: #333;
@@ -29,4 +26,5 @@ button {
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
 }
