@@ -1,0 +1,8 @@
+<div class='empty-state'>
+    <p class='empty-state-text'>Drop a package.json file here...</p>
+    <angular-file-uploader 
+        [config]="afuConfig"
+        [resetUpload]=resetVar
+        (ApiResponse)="DocUpload($event)">
+    </angular-file-uploader>
+</div>
