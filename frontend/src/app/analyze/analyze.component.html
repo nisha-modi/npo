@@ -1,0 +1,12 @@
+<ng-container [ngSwitch]="state">
+  <p *ngSwitchCase="'analyzing'">Analyzing {{ currentPackage.name }}.</p>
+  <p *ngSwitchCase="'findingAlternatives'">
+    Finding alternative packages for {{ currentPackage.name }}.
+  </p>
+  <!-- TODO: What gets passed to this component ? -->
+  <app-dependency-and-alternatives
+    *ngSwitchCase="'displayingAlternatives'"
+  ></app-dependency-and-alternatives>
+</ng-container>
+<!-- TODO: be smart about when to display the next button. -->
+<button (click)="nextPackage()">next package</button>

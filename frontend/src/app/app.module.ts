@@ -8,7 +8,8 @@ import { DependencyAndAlternativesComponent } from './dependency-and-alternative
 import { DepTreeTempComponent } from './dep-tree-temp/dep-tree-temp.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { EmptyStateComponent } from './empty-state/empty-state.component';
-import { AngularFileUploaderModule } from "angular-file-uploader";
+import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { AnalyzeComponent } from './analyze/analyze.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,10 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     DependencyAndAlternativesComponent,
     DepTreeTempComponent,
     FileUploadComponent,
-    EmptyStateComponent
+    EmptyStateComponent,
+    AnalyzeComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AngularFileUploaderModule
-  ],
+  imports: [BrowserModule, HttpClientModule, AngularFileUploaderModule],
   providers: [],
   bootstrap: [AppComponent]
 })

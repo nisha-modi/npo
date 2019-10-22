@@ -8,7 +8,7 @@ const httpTrigger: AzureFunction = async function(
   context.log('HTTP trigger function processed a request.');
 
   const name = req.query.name;
-  const version = req.query.version;
+  const version = 'latest'; // TODO: make the below stuff handle semver so that this works -> req.query.version;
 
   if (name && version) {
     const isScoped = name.startsWith('@');

@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-import { environment as env } from 'src/environments/environment';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   appLogoUrl = 'assets/NPO.png';
 
-  funcResponse$ = this.http.get(`${env.api}/Ping?name=world`, {
-    responseType: 'text'
-  });
+  state: 'begin' | 'analyze' = 'begin';
+  packageDependencies: { name: string; version: string }[];
 
-  constructor(private http: HttpClient) {}
+  ngOnInit() {
+    // this will actually be done in response to the "upload" event
+    this.state = 'analyze';
+    this.packageDependencies = [
+      { name: 'dragula', version: '^3.7.2' },
+      { name: 'lodash', version: '^4.17.0' }
+    ];
+  }
 }
