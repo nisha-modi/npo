@@ -1,13 +1,37 @@
 <div><img class="header-logo" src="{{ appLogoUrl }}" /></div>
-
-<div *ngIf="!files.length" class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)">
-	<div class="text-wrapper">
-		<div class="centered">Drop your file here!</div>
-	</div>
+<br />
+<br />
+<div class="goal">
+  <br />
+  <h1><b>Our Goal</b></h1>
+  <h3>
+    Applications often rely on dependencies to provide functionality and improve
+    application appearance, among other things. However, with hundreds of open
+    source packages out there, many of which also rely on dependencies
+    themselves, application maintence and security can get complicated.
+  </h3>
+  <h3>
+    Our goal is to optimize your application's dependency tree. We search your
+    application for packages that could present vulnerabilities, and provide
+    alternatives that will simplify future development and maintence.
+  </h3>
+</div>
+<br />
+<br />
+<br />
+<div
+  *ngIf="!files.length"
+  class="col-12 rmpm dropzone"
+  appDrag
+  (files)="filesDropped($event)"
+>
+  <div class="text-wrapper">
+    <div class="centered">Drop your file here!</div>
+  </div>
 </div>
 <!--dropped image preview-->
 <div *ngFor="let file of files">
-  <img *ngIf="file" [src]="file.url" width="100px" height="100px">
+  <img *ngIf="file" [src]="file.url" width="100px" height="100px" />
 </div>
 
 <button type="button" (click)="upload()">Upload Image</button>
@@ -23,3 +47,26 @@
 </ng-container> -->
 
 <!-- <app-dep-tree-temp></app-dep-tree-temp> -->
+
+<div class="aboutTreeScore">
+  <h1><b>How is Tree Score calculated?</b></h1>
+  <h3>
+    We look at your application's dependency tree to find dependencies you are
+    using which have multiple dependencies themselves. We use these packages
+    descriptions to search for alternatives with similar functionality, but
+    fewer dependencies.
+  </h3>
+  <h3>
+    The Tree Score for your package and its alternatives is calculated by
+    analyzing the depth of the dependency branch. We favor packages that create
+    shallow branches (ones whose dependencies don't rely on dependencies), and
+    NPM's rating of the package, based on package
+    <b style="color:#bc423c">Quality</b>,
+    <b style="color:#bc423c">Maintainability</b>, and
+    <b style="color:#bc423c">Popularity</b> to calculate your packages, and our
+    alternatives, Tree Scores.
+  </h3>
+</div>
+<br />
+<br />
+<br />

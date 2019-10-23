@@ -1,16 +1,15 @@
 h1 {
-  color: #369;
+  color: #bc423c;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
 h2,
 h3 {
-  color: #444;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
 
-input[type="text"],
+input[type='text'],
 button {
   color: #333;
   font-family: Cambria, Georgia;
@@ -21,6 +20,21 @@ button {
   margin-right: auto;
   display: block;
   width: 20%;
+}
+
+.aboutTreeScore {
+  text-align: center;
+  color: #ffffff;
+  padding-left: 15em;
+  padding-right: 15em;
+}
+
+.goal {
+  border-top: 3px solid #bc423c;
+  text-align: center;
+  color: #ffffff;
+  padding-left: 15em;
+  padding-right: 15em;
 }
 
 .dropzone {
