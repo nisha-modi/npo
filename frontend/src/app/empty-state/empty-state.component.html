@@ -1,3 +1,11 @@
-<div class='empty-state'>
-    <p class='empty-state-text'>Drop a package.json file here...</p>
+<div *ngIf="!files.length" class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)">
+	<div class="text-wrapper">
+		<div class="centered">Drop your file here!</div>
+	</div>
 </div>
+<!--dropped image preview-->
+<div *ngFor="let file of files">
+  <img *ngIf="file" [src]="file.url" width="100px" height="100px">
+</div>
+
+<button type="button" (click)="upload()">Upload Image</button>

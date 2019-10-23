@@ -8,7 +8,8 @@ import {
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 export interface FileHandle {
-    file: File;
+    text: string;
+    // file: File;
     url: SafeUrl;
   }
 
@@ -43,11 +44,17 @@ export interface FileHandle {
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < evt.dataTransfer.files.length; i++) {
         const file = evt.dataTransfer.files[i];
-        const url = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-        files.push({ file, url });
-      }
-      if (files.length > 0) {
-        this.files.emit(files);
+        let text = null;
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => {
+          text = fileReader.result;
+          const url = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
+          files.push({ text, url });
+          if (files.length > 0) {
+            this.files.emit(files);
+          }
+        };
+        fileReader.readAsText(file);
       }
     }
   }
