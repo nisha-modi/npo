@@ -11,6 +11,8 @@ h3 {
 
 input[type='text'],
 button {
+  margin-top: 5px;
+  margin-left: 20%;
   color: #333;
   font-family: Cambria, Georgia;
 }
@@ -38,13 +40,14 @@ button {
 }
 
 .dropzone {
-  min-height: 400px;
+  min-height: 50px;
   min-width: 400px;
   display: table;
+  width: 70%;
+  height: 100px;
+  margin-top: 50px;
   background-color: #eee;
-  border: dotted 1px #aaa;
-  padding-left: 15em;
-  padding-right: 15em;
+  border: dashed 2px rgb(187, 68, 62);
   margin: 0 auto;
 }
 

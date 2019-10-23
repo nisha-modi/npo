@@ -1,0 +1,27 @@
+.dependency-and-alternatives {
+    position: relative;
+    width: 60%;
+    height: 800px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(187, 68, 62);
+}
+
+.dependency {
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    margin-top: 25%;
+    margin-left: 15%;
+    background-color: rgb(38, 38, 38);
+}
+
+.alternatives {
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    margin-top: 10%;
+    margin-left: 60%;
+    background-color: rgb(38, 38, 38);
+}
