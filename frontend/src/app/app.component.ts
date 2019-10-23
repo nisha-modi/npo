@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileHandle } from './dragDrop.directive';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,16 @@ export class AppComponent implements OnInit {
 
   state: 'begin' | 'analyze' = 'begin';
   packageDependencies: { name: string; version: string }[];
+
+  files: FileHandle[] = [];
+
+  filesDropped(files: FileHandle[]): void {
+    this.files = files;
+  }
+
+  upload(): void {
+    // get image upload file obj;
+  }
 
   ngOnInit() {
     // this will actually be done in response to the "upload" event
