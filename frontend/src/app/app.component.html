@@ -19,22 +19,8 @@
 <br />
 <br />
 <br />
-<div
-  *ngIf="!files.length"
-  class="col-12 rmpm dropzone"
-  appDrag
-  (files)="filesDropped($event)"
->
-  <div class="text-wrapper">
-    <div class="centered">Drop your file here!</div>
-  </div>
-</div>
-<!--dropped image preview-->
-<div *ngFor="let file of files">
-  <img *ngIf="file" [src]="file.url" width="100px" height="100px" />
-</div>
 
-<button type="button" (click)="upload()">Upload Image</button>
+<app-empty-state></app-empty-state>
 
 <app-dependency-and-alternatives></app-dependency-and-alternatives>
 
