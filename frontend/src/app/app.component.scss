@@ -41,9 +41,11 @@ button {
   min-height: 400px;
   min-width: 400px;
   display: table;
-  width: 100%;
   background-color: #eee;
   border: dotted 1px #aaa;
+  padding-left: 15em;
+  padding-right: 15em;
+  margin: 0 auto;
 }
 
 .text-wrapper {
@@ -56,6 +58,11 @@ button {
   font-size: 1.3em;
   font-weight: bold;
   text-align: center;
+}
+
+.dropzone {
+  padding-left: 15em;
+  padding-right: 15em;
 }
 
 /* everywhere else */
