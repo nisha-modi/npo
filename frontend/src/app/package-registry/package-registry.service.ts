@@ -18,15 +18,15 @@ export class DependencyTree {
   getScore() {
     const levelScores = [];
 
-    const toVisit = [{ level: 1, node: this.root }];
+    const toVisit = [{ levelIdx: 0, node: this.root }];
 
     while (toVisit.length) {
       const next = toVisit.pop();
 
-      levelScores[next.level] = (levelScores[next.level] || 0) + 1;
+      levelScores[next.levelIdx] = (levelScores[next.levelIdx] || 0) + 1;
 
       next.node.dependencies.forEach(node => {
-        toVisit.push({ level: next.level + 1, node });
+        toVisit.push({ levelIdx: next.levelIdx + 1, node });
       });
     }
 
