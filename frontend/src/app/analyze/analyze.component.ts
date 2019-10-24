@@ -53,9 +53,17 @@ export class AnalyzeComponent implements OnInit {
       .pipe(
         tap(tree => {
           this.currentTreeScore = tree.getScore();
+          // TODO: populate the tree score of the dependency with that ^^^^
 
           // TODO: is it "good enough"? break the cycle somehow
         }),
+        mergeMap(() =>
+          this.packageRegistry.search(name).pipe(
+            tap(results => {
+              // populate the rest of the dependency infomration from the first result in results
+            })
+          )
+        ),
         mergeMap(() => {
           this.state = 'findingAlternatives';
 

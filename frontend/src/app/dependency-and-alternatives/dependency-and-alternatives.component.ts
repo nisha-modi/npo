@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Dependency } from '../models/dependency.model';
 
 export class DependencyTest {
   name: 'name';
@@ -11,8 +12,7 @@ export class DependencyTest {
   styleUrls: ['./dependency-and-alternatives.component.scss']
 })
 export class DependencyAndAlternativesComponent implements OnInit {
-  @Input() dependency: DependencyTest;
-  @Input() alternatives: DependencyTest[];
+  @Input() dependency: Dependency;
 
   constructor() {}
 

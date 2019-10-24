@@ -3,13 +3,26 @@ import { environment as env } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, forkJoin } from 'rxjs';
-import { map, mergeMap, shareReplay } from 'rxjs/operators';
+import { map, mergeMap, shareReplay, tap } from 'rxjs/operators';
 
 interface NpmPackage {
   name: string;
   description: string;
   dependencies: Map<string, string>; // { packageName: version }
   devDependencies: Map<string, string>; // { packageName: version }
+}
+
+interface NpmSearchResult {
+  package: Partial<NpmPackage>;
+  score: {
+    detail: {
+      maintenance: number;
+      popularity: number;
+      quality: number;
+    };
+    final: number;
+  };
+  searchScore: number; // higher is a better fit
 }
 
 export class DependencyTree {
@@ -101,8 +114,14 @@ export class PackageRegistryService {
     );
   }
 
+  searchSpecificPackage(name: string): Observable<NpmSearchResult> {
+    return this.search(name).pipe(map(results => results[0])); // better hope there is a result
+  }
+
   // TODO: add a type for the search result (see libnpmsearch)
-  search(text: string): Observable<any> {
-    return this.http.get<any>(`${env.api}/package-search?text=${text}`);
+  search(text: string): Observable<NpmSearchResult[]> {
+    return this.http
+      .get<any>(`${env.api}/package-search?text=${text}`)
+      .pipe(tap(res => console.log(res)));
   }
 }
