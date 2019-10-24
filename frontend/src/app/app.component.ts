@@ -12,13 +12,15 @@ export class AppComponent implements OnInit {
   state: 'begin' | 'analyze' = 'begin';
   packageDependencies: { name: string; version: string }[];
 
-  ngOnInit() {
-    // this will actually be done in response to the "upload" event
+  ngOnInit() {}
+
+  handleDependenciesFound(dependencies: Map<string, string>) {
+    this.packageDependencies = Object.keys(dependencies).map(name => ({
+      name,
+      version: dependencies[name]
+    }));
+
     this.state = 'analyze';
-    this.packageDependencies = [
-      { name: 'dragula', version: '^3.7.2' },
-      { name: 'lodash', version: '^4.17.0' }
-    ];
   }
 
   removeLowScoringDependencies(dependencies: Dependency[]) {

@@ -51,7 +51,7 @@ export class AnalyzeComponent implements OnInit {
       .getDepTree(name, version)
       .pipe(
         tap(tree => {
-          this.currentTreeScore = this.calcTreeScore(tree);
+          this.currentTreeScore = tree.getScore();
 
           // TODO: is it "good enough"? break the cycle somehow
         }),

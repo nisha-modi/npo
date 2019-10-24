@@ -8,8 +8,8 @@ import { map, mergeMap, shareReplay } from 'rxjs/operators';
 interface NpmPackage {
   name: string;
   description: string;
-  dependencies: Record<string, string>; // { packageName: version }
-  devDependencies: Record<string, string>; // { packageName: version }
+  dependencies: Map<string, string>; // { packageName: version }
+  devDependencies: Map<string, string>; // { packageName: version }
 }
 
 export class DependencyTree {
@@ -30,7 +30,9 @@ export class DependencyTree {
       });
     }
 
-    return levelScores.reduce((acc, levelCount) => acc * levelCount);
+    return levelScores.reduce(
+      (acc, levelCount, idx) => acc + levelCount * (idx + 1)
+    );
   }
 }
 

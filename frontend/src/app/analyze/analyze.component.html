@@ -1,3 +1,7 @@
+<p>
+  Delete me. this is the tree score for {{ currentPackage.name }}:
+  {{ currentTreeScore }}
+</p>
 <ng-container [ngSwitch]="state">
   <p *ngSwitchCase="'analyzing'">Analyzing {{ currentPackage.name }}.</p>
   <p *ngSwitchCase="'findingAlternatives'">

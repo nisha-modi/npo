@@ -20,21 +20,16 @@
 <br />
 <br />
 
-<app-empty-state></app-empty-state>
-
-<app-dependency-and-alternatives></app-dependency-and-alternatives>
-
-<!-- <app-file-upload></app-file-upload> -->
-
-<!-- <ng-container [ngSwitch]="state">
-  <app-empty-state *ngSwitchCase="'begin'"></app-empty-state>
+<ng-container [ngSwitch]="state">
+  <app-empty-state
+    *ngSwitchCase="'begin'"
+    (dependenciesFound)="handleDependenciesFound($event)"
+  ></app-empty-state>
   <app-analyze
     *ngSwitchCase="'analyze'"
     [packageDependencies]="packageDependencies"
   ></app-analyze>
-</ng-container> -->
-
-<!-- <app-dep-tree-temp></app-dep-tree-temp> -->
+</ng-container>
 
 <div class="aboutTreeScore">
   <h1><b>How is Tree Score calculated?</b></h1>
