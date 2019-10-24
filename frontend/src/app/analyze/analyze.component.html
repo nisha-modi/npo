@@ -8,9 +8,12 @@
     Finding alternative packages for {{ currentPackage.name }}.
   </p>
   <!-- TODO: What gets passed to this component ? -->
-  <app-dependency-and-alternatives
-    *ngSwitchCase="'displayingAlternatives'"
-  ></app-dependency-and-alternatives>
+  <div class="main-container" *ngSwitchCase="'displayingAlternatives'">
+  <!-- <div class="main-container" *ngSwitchCase="'analyzing'"> -->
+    <app-dependency-and-alternatives
+    ></app-dependency-and-alternatives>
+  </div>
+  
 </ng-container>
 <!-- TODO: be smart about when to display the next button. -->
 <button (click)="nextPackage()">next package</button>

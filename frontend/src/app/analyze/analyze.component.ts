@@ -4,6 +4,7 @@ import {
   DependencyTree
 } from '../package-registry/package-registry.service';
 import { tap, mergeMap } from 'rxjs/operators';
+import { Dependency } from '../models/dependency.model';
 
 @Component({
   selector: 'app-analyze',
@@ -11,7 +12,7 @@ import { tap, mergeMap } from 'rxjs/operators';
   styleUrls: ['./analyze.component.scss']
 })
 export class AnalyzeComponent implements OnInit {
-  @Input() packageDependencies: { name: string; version: string }[];
+  @Input() packageDependencies: Dependency[];
 
   state: 'analyzing' | 'findingAlternatives' | 'displayingAlternatives' =
     'analyzing';
@@ -75,6 +76,31 @@ export class AnalyzeComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  removeLowScoringDependencies(dependencies: Dependency[]) {
+    for (let i = dependencies.length - 1; i <= 0; i--) {
+      if (dependencies[i].dependencyScore <= 1) {
+        dependencies.splice(i, 1);
+      }
+    }
+    return dependencies;
+  }
+
+  removeWorseAlternatives(dependencies: Dependency[]) {
+    for (let i = dependencies.length - 1; i >= 0; i--) {
+      for (let j = dependencies[i].alternatives.length - 1; j <= 0; j--) {
+        if (
+          dependencies[i].treeScore > dependencies[i].alternatives[j].treeScore
+        ) {
+          dependencies[i].alternatives.splice(j, 1);
+        }
+      }
+      if (dependencies[i].alternatives.length == 0) {
+        dependencies.splice(i, 1);
+      }
+    }
+    return dependencies;
   }
 
   // TODO: Implement and put somewhere else, probably.
