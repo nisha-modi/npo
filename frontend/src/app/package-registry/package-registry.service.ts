@@ -14,6 +14,24 @@ interface NpmPackage {
 
 export class DependencyTree {
   constructor(public root: DependencyNode) {}
+
+  getScore() {
+    const levelScores = [];
+
+    const toVisit = [{ level: 1, node: this.root }];
+
+    while (toVisit.length) {
+      const next = toVisit.pop();
+
+      levelScores[next.level] = (levelScores[next.level] || 0) + 1;
+
+      next.node.dependencies.forEach(node => {
+        toVisit.push({ level: next.level + 1, node });
+      });
+    }
+
+    return levelScores.reduce((acc, levelCount) => acc * levelCount);
+  }
 }
 
 export class DependencyNode {
