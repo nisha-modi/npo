@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   removeLowScoringDependencies(dependencies: Dependency[]) {
-    for (let i = 0; i < dependencies.length; i++) {
+    for (let i = dependencies.length - 1; i <= 0; i--) {
       if (dependencies[i].dependencyScore <= 1) {
         dependencies.splice(i, 1);
       }
@@ -31,8 +31,8 @@ export class AppComponent implements OnInit {
   }
 
   removeWorseAlternatives(dependencies: Dependency[]) {
-    for (let i = 0; i < dependencies.length; i++) {
-      for (let j = 0; j < dependencies[i].alternatives.length; j++) {
+    for (let i = dependencies.length - 1; i >= 0; i--) {
+      for (let j = dependencies[i].alternatives.length - 1; j <= 0; j--) {
         if (
           dependencies[i].treeScore > dependencies[i].alternatives[j].treeScore
         ) {
