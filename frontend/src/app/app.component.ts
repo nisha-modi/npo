@@ -19,8 +19,6 @@ export class AppComponent implements OnInit {
       name,
       version: dependencies[name]
     }));
-
-    this.state = 'analyze';
   }
 
   removeLowScoringDependencies(dependencies: Dependency[]) {
