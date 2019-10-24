@@ -4,6 +4,7 @@ import {
   DependencyTree
 } from '../package-registry/package-registry.service';
 import { tap, mergeMap } from 'rxjs/operators';
+import { Dependency } from '../models/dependency.model';
 
 @Component({
   selector: 'app-analyze',
@@ -11,7 +12,7 @@ import { tap, mergeMap } from 'rxjs/operators';
   styleUrls: ['./analyze.component.scss']
 })
 export class AnalyzeComponent implements OnInit {
-  @Input() packageDependencies: { name: string; version: string }[];
+  @Input() packageDependencies: Dependency[];
 
   state: 'analyzing' | 'findingAlternatives' | 'displayingAlternatives' =
     'analyzing';
