@@ -3,8 +3,9 @@ import {
   PackageRegistryService,
   DependencyTree
 } from '../package-registry/package-registry.service';
-import { tap, mergeMap } from 'rxjs/operators';
+import { tap, mergeMap, map } from 'rxjs/operators';
 import { Dependency } from '../models/dependency.model';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-analyze',
@@ -48,34 +49,82 @@ export class AnalyzeComponent implements OnInit {
 
     this.state = 'analyzing';
 
-    const depTree = this.packageRegistry
+    this.packageRegistry
       .getDepTree(name, version)
       .pipe(
         tap(tree => {
-          this.currentTreeScore = tree.getScore();
-          // TODO: populate the tree score of the dependency with that ^^^^
-
-          // TODO: is it "good enough"? break the cycle somehow
+          this.currentPackage.dependencyScore = tree.getScore();
         }),
         mergeMap(() =>
-          this.packageRegistry.search(name).pipe(
-            tap(results => {
-              // populate the rest of the dependency infomration from the first result in results
+          this.packageRegistry.searchSpecificPackage(name).pipe(
+            tap(result => {
+              this.currentPackage.description =
+                result.package.description || '';
+              this.currentPackage.optimal = result.score.final;
+              this.currentPackage.maintenance = result.score.detail.maintenance;
+              this.currentPackage.popularity = result.score.detail.popularity;
+              this.currentPackage.quality = result.score.detail.quality;
             })
           )
         ),
         mergeMap(() => {
+          console.log('finidng alts');
           this.state = 'findingAlternatives';
 
-          return this.packageRegistry.search('something cool');
-        }),
-        tap(searchResults => {
-          this.alternatives = searchResults;
+          return this.packageRegistry
+            .search(this.currentPackage.description)
+            .pipe(
+              mergeMap(searchResults => {
+                console.log('fork joinigng on search results');
+                console.log('potentials', searchResults);
+                return forkJoin(
+                  searchResults
+                    .filter(
+                      result =>
+                        result.searchScore > 0.000000001 ||
+                        name === result.package.name
+                    ) // phew, low bar
+                    .map(result => {
+                      return this.packageRegistry
+                        .getDepTree(result.package.name)
+                        .pipe(
+                          tap(() => console.log('here iam')),
+                          map(
+                            tree =>
+                              new Dependency(
+                                result.package.name,
+                                result.package.version,
+                                result.package.description,
+                                tree.getScore(),
+                                result.score.final,
+                                result.score.detail.quality,
+                                result.score.detail.maintenance,
+                                result.score.detail.popularity
+                              )
+                          )
+                        );
+                    })
+                );
+              }),
+              tap(alternatives => {
+                this.state = 'displayingAlternatives';
+                console.log('found these alts', alternatives);
+                // filter out any alternatives that have a worse tree score than the current package
+                this.currentPackage.alternatives = alternatives.filter(
+                  alt => alt.treeScore < this.currentPackage.treeScore
+                );
 
-          this.state = 'displayingAlternatives';
+                console.log(
+                  'after filtering',
+                  this.currentPackage.alternatives
+                );
+              })
+            );
         })
       )
-      .subscribe();
+      .subscribe(() => {
+        // if this.currentPackage.isGoodEnough(), just call nextPackage() right here.
+      });
   }
 
   removeLowScoringDependencies(dependencies: Dependency[]) {
@@ -96,7 +145,7 @@ export class AnalyzeComponent implements OnInit {
           dependencies[i].alternatives.splice(j, 1);
         }
       }
-      if (dependencies[i].alternatives.length == 0) {
+      if (dependencies[i].alternatives.length === 0) {
         dependencies.splice(i, 1);
       }
     }

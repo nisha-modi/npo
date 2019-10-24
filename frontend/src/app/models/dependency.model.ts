@@ -1,4 +1,8 @@
 export class Dependency {
+  get treeScore(): number {
+    return this.optimal / this.dependencyScore;
+  }
+
   constructor(
     public name: string,
     public version: string,
@@ -6,9 +10,8 @@ export class Dependency {
     public dependencyScore: number = null,
     public optimal: number = null,
     public quality: number = null,
-    public maintenence: number = null,
+    public maintenance: number = null,
     public popularity: number = null,
-    public treeScore: string = null,
     public alternatives: Dependency[] = null
   ) {}
 }

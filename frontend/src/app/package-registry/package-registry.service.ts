@@ -8,6 +8,7 @@ import { map, mergeMap, shareReplay, tap } from 'rxjs/operators';
 interface NpmPackage {
   name: string;
   description: string;
+  version: string;
   dependencies: Map<string, string>; // { packageName: version }
   devDependencies: Map<string, string>; // { packageName: version }
 }
