@@ -8,6 +8,7 @@ import { DependencyAndAlternativesComponent } from './dependency-and-alternative
 import { EmptyStateComponent } from './empty-state/empty-state.component';
 import { AnalyzeComponent } from './analyze/analyze.component';
 import { DragDirective } from './dragDrop.directive';
+import { NpoNameComponent } from './npo-name/npo-name.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DragDirective } from './dragDrop.directive';
     DependencyAndAlternativesComponent,
     EmptyStateComponent,
     AnalyzeComponent,
-    DragDirective
+    DragDirective,
+    NpoNameComponent
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [],

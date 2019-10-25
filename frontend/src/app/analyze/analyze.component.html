@@ -2,10 +2,7 @@
   <ng-container [ngSwitch]="state">
     <div class="dependency">
       <div *ngSwitchCase="'analyzing'" class="analyzing">
-        <h1>analyzing {{ currentPackage.name }}</h1>
-        <ul *ngIf="currentPackage.treeScore">
-          <li>tree score : {{ currentPackage.treeScore }}</li>
-        </ul>
+        <h1>Analyzing {{ currentPackage.name }}</h1>
       </div>
     </div>
     <div>
@@ -16,6 +13,10 @@
     <div class="dependency">
       <!-- TODO: What gets passed to this component ? -->
       <div *ngSwitchCase="'displayingAlternatives'" class="analyzing">
+        <h1>current package : {{ currentPackage.name }}</h1>
+        <ul>
+          <li>tree score : {{ currentPackage.treeScore }}</li>
+        </ul>
         <div *ngFor="let alternative of currentPackage.alternatives">
           <h1>alternative : {{ alternative.name }}</h1>
           <ul>

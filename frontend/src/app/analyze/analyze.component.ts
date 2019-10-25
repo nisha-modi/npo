@@ -3,7 +3,7 @@ import {
   PackageRegistryService,
   DependencyTree
 } from '../package-registry/package-registry.service';
-import { tap, mergeMap, map } from 'rxjs/operators';
+import { tap, mergeMap, map, delay } from 'rxjs/operators';
 import { Dependency } from '../models/dependency.model';
 import { forkJoin } from 'rxjs';
 

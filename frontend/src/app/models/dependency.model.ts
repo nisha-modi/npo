@@ -1,6 +1,6 @@
 export class Dependency {
   get treeScore(): number {
-    return this.optimal / this.dependencyScore;
+    return this.optimal * this.dependencyScore;
   }
 
   constructor(
