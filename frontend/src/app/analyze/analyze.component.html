@@ -15,13 +15,14 @@
   <div class="alternatives" *ngSwitchCase="'displayingAlternatives'">
     Alternative packages: {{ currentPackage.alternatives[1] }}
     <!-- <div class="main-container" *ngSwitchCase="'analyzing'"> -->
-    <div class="dependency-and-alternatives">
-      <div class="dependency">
-        {{ currentPackage.name }}
-      </div>
-      <div class="alternatives">
-        {{ currentPackage.alternatives[1] }}
-      </div>
+  </div>
+
+  <div class="dependency-and-alternatives">
+    <div class="dependency">
+      {{ currentPackage.name }}
+    </div>
+    <div class="alternatives">
+      {{ currentPackage.alternatives[1] }}
     </div>
   </div>
 </ng-container>
