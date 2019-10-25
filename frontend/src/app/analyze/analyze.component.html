@@ -17,7 +17,7 @@
     <div class="alternatives">
       <!-- TODO: What gets passed to this component ? -->
       <div *ngSwitchCase="'displayingAlternatives'">
-        Alternative packages: {{ currentPackage.alternatives[1] }}
+        Alternative packages: {{ currentPackage.alternatives[0] | json }}
         <!-- <div class="main-container" *ngSwitchCase="'analyzing'"> -->
       </div>
     </div>
