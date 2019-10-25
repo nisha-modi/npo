@@ -4,8 +4,38 @@ p {
 }
 
 .main-container {
-    width: 70%;
-    height: 800px;
-    background-color: rgb(187, 68, 62);
-    margin: 0 auto;
+  width: 70%;
+  height: 800px;
+  background-color: rgb(187, 68, 62);
+  margin: 0 auto;
+}
+
+.analyzing {
+  width: 70%;
+  height: 300px;
+  margin: 0 auto;
+  font-size: 30px;
+  color: #bc423c;
+  text-align: center;
+}
+
+.button {
+  padding: 1em;
+  background-color: #bc423c;
+  color: white;
+  font-size: 20px;
+  border: 2px solid white;
+  margin: 0 auto;
+}
+
+.button-container {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.dependencies-and-alternatives {
+  width: 70%;
+  background-color: red;
+  color: white;
+  height: 300px;
 }

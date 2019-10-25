@@ -3,17 +3,30 @@
   {{ currentTreeScore }}
 </p>
 <ng-container [ngSwitch]="state">
-  <p *ngSwitchCase="'analyzing'">Analyzing {{ currentPackage.name }}.</p>
-  <p *ngSwitchCase="'findingAlternatives'">
-    Finding alternative packages for {{ currentPackage.name }}.
-  </p>
-  <!-- TODO: What gets passed to this component ? -->
-  <div class="main-container" *ngSwitchCase="'displayingAlternatives'">
-  <!-- <div class="main-container" *ngSwitchCase="'analyzing'"> -->
-    <app-dependency-and-alternatives
-    ></app-dependency-and-alternatives>
+  <div *ngSwitchCase="'analyzing'" class="analyzing">
+    <h1>Analyzing {{ currentPackage.name }}.</h1>
   </div>
-  
+  <div class="analyzing">
+    <h1 *ngSwitchCase="'findingAlternatives'">
+      Finding alternative packages for {{ currentPackage.name }}.
+    </h1>
+  </div>
+  <!-- TODO: What gets passed to this component ? -->
+  <div class="alternatives" *ngSwitchCase="'displayingAlternatives'">
+    Alternative packages: {{ currentPackage.alternatives[1] }}
+    <!-- <div class="main-container" *ngSwitchCase="'analyzing'"> -->
+  </div>
+
+  <div class="dependency-and-alternatives">
+    <div class="dependency">
+      {{ currentPackage.name }}
+    </div>
+    <div class="alternatives">
+      {{ currentPackage.alternatives[1] }}
+    </div>
+  </div>
 </ng-container>
 <!-- TODO: be smart about when to display the next button. -->
-<button (click)="nextPackage()">next package</button>
+<div class="button-container">
+  <button (click)="nextPackage()" class="button"><b>next package</b></button>
+</div>
