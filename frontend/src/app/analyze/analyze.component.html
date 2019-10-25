@@ -6,18 +6,27 @@
   <ng-container [ngSwitch]="state">
     <div class="dependency">
       <div *ngSwitchCase="'analyzing'" class="analyzing">
-        <h1>Analyzing {{ currentPackage.name }}.</h1>
+        <h1>Analyzing {{ currentPackage.name }}</h1>
+        <ul>
+          <li>Tree Score {{ currentPackage.treeScore }}</li>
+          <li>Popularity Score {{ currentPackage.popularity }}</li>
+          <li>Maintenance Score {{ currentPackage.maintenence }}</li>
+          <li>Quality Score {{ currentPackage.quality }}</li>
+        </ul>
       </div>
     </div>
     <div class="analyzing">
       <h1 *ngSwitchCase="'findingAlternatives'">
-        Finding alternative packages for {{ currentPackage.name }}.
+        Finding alternative packages for {{ currentPackage.name }}
       </h1>
     </div>
     <div class="alternatives">
       <!-- TODO: What gets passed to this component ? -->
       <div *ngSwitchCase="'displayingAlternatives'">
-        Alternative packages: {{ currentPackage.alternatives[0] | json }}
+        Alternative packages: {{ currentPackage.alternatives | json }}
+        <li *ngFor="let alternative of currentPackage.alternatives">
+          <h1>{{ alternative }}</h1>
+        </li>
         <!-- <div class="main-container" *ngSwitchCase="'analyzing'"> -->
       </div>
     </div>
