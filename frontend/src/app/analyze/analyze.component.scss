@@ -29,23 +29,32 @@ p {
 }
 
 .button-container {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 70%;
 }
 
 .dependency-and-alternatives {
   padding: 3em;
   width: 70%;
-  height: 600px;
   margin: 0 auto;
+  text-align: center;
+  border-left: 1px dashed #bc423c;
+  border-right: 1px dashed #bc423c;
 }
 
 .dependency {
   width: 100%;
   color: white;
+  text-align: center;
 }
 
 .alternatives {
   width: 100%;
   color: white;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
 }
