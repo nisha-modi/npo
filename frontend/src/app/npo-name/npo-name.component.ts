@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { timer } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-npo-name',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./npo-name.component.scss']
 })
 export class NpoNameComponent implements OnInit {
+  names$ = timer(0, 5000).pipe(
+    map(value => {
+      const words = [
+        'Neon Panda Organization',
+        'Nuclear Potato Ostriches',
+        'No Popsicles, Okay?',
+        'Nonsensical Party Orchestra',
+        'Natural Pleasant One',
+        'North Pole Olives',
+        'Nasty Pancake Owls'
+      ];
 
-  constructor() { }
+      return words[value % words.length];
+    })
+  );
 
-  ngOnInit() {
-  }
+  constructor() {}
 
+  ngOnInit() {}
 }
