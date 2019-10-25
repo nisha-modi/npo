@@ -151,9 +151,4 @@ export class AnalyzeComponent implements OnInit {
     }
     return dependencies;
   }
-
-  // TODO: Implement and put somewhere else, probably.
-  private calcTreeScore(tree: DependencyTree) {
-    return Math.random();
-  }
 }

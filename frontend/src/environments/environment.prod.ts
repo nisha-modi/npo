@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://api.npojs.dev' // TODO
+  api: 'https://npo-func.azurewebsites.net'
 };
