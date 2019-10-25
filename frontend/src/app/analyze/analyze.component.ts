@@ -124,6 +124,10 @@ export class AnalyzeComponent implements OnInit {
       )
       .subscribe(() => {
         // if this.currentPackage.isGoodEnough(), just call nextPackage() right here.
+
+        if (!this.currentPackage.alternatives.length) {
+          this.nextPackage();
+        }
       });
   }
 

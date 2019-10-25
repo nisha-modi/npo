@@ -3,7 +3,7 @@
     <div class="dependency">
       <div *ngSwitchCase="'analyzing'" class="analyzing">
         <h1>analyzing {{ currentPackage.name }}</h1>
-        <ul>
+        <ul *ngIf="currentPackage.treeScore">
           <li>tree score : {{ currentPackage.treeScore }}</li>
         </ul>
       </div>
