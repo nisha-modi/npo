@@ -2,30 +2,27 @@
   Delete me. this is the tree score for {{ currentPackage.name }}:
   {{ currentTreeScore }}
 </p>
-<ng-container [ngSwitch]="state">
-  <div *ngSwitchCase="'analyzing'" class="analyzing">
-    <h1>Analyzing {{ currentPackage.name }}.</h1>
-  </div>
-  <div class="analyzing">
-    <h1 *ngSwitchCase="'findingAlternatives'">
-      Finding alternative packages for {{ currentPackage.name }}.
-    </h1>
-  </div>
-  <!-- TODO: What gets passed to this component ? -->
-  <div class="alternatives" *ngSwitchCase="'displayingAlternatives'">
-    Alternative packages: {{ currentPackage.alternatives[1] }}
-    <!-- <div class="main-container" *ngSwitchCase="'analyzing'"> -->
-  </div>
-
-  <div class="dependency-and-alternatives">
+<div class="dependency-and-alternatives">
+  <ng-container [ngSwitch]="state">
     <div class="dependency">
-      {{ currentPackage.name }}
+      <div *ngSwitchCase="'analyzing'" class="analyzing">
+        <h1>Analyzing {{ currentPackage.name }}.</h1>
+      </div>
+    </div>
+    <div class="analyzing">
+      <h1 *ngSwitchCase="'findingAlternatives'">
+        Finding alternative packages for {{ currentPackage.name }}.
+      </h1>
     </div>
     <div class="alternatives">
-      {{ currentPackage.alternatives[1] }}
+      <!-- TODO: What gets passed to this component ? -->
+      <div *ngSwitchCase="'displayingAlternatives'">
+        Alternative packages: {{ currentPackage.alternatives[1] }}
+        <!-- <div class="main-container" *ngSwitchCase="'analyzing'"> -->
+      </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>
+</div>
 <!-- TODO: be smart about when to display the next button. -->
 <div class="button-container">
   <button (click)="nextPackage()" class="button"><b>next package</b></button>

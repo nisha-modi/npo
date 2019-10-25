@@ -33,9 +33,20 @@ p {
   width: 70%;
 }
 
-.dependencies-and-alternatives {
+.dependency-and-alternatives {
+  padding: 3em;
   width: 70%;
-  background-color: red;
-  color: white;
+  background: red;
   height: 300px;
+  margin: 0 auto;
+}
+
+.dependency {
+  width: 50%;
+  color: white;
+}
+
+.alternatives {
+  width: 50%;
+  color: white;
 }
