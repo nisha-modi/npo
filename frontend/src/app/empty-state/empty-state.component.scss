@@ -3,10 +3,10 @@
   min-width: 400px;
   display: table;
   width: 70%;
-  height: 100px;
+  height: 90px;
   margin-top: 50px;
-  background-color: #eee;
-  border: dashed 2px rgb(187, 68, 62);
+  background-color: rgb(28, 28, 28) !important;
+  border: dashed 2px #bc423c;
   margin: 0 auto;
 }
 
@@ -20,13 +20,18 @@
   font-size: 1.3em;
   font-weight: bold;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-weight: lighter;
 }
 
 .analyze-button {
   padding: 1em;
-  background-color: #bc423c;
-  color: white;
-  font-size: 20px;
-  border: 2px solid white;
   margin-left: 15%;
+  padding: 2px 15px;
+  background-color: rgb(15, 15, 15);
+  border-color: rgb(15, 15, 15);
+  color: #ffffff;
+  font-weight: lighter;
+  border-radius: 4px;
 }
